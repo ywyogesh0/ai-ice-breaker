@@ -16,6 +16,8 @@ langchain-openai = "*"
 watchdog = "*"
 langchainhub = "*"
 black = "*"
+python-dotenv = "*"
+langchain-ollama = "*"
 
 [dev-packages]
 
