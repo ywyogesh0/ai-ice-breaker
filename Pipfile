@@ -18,6 +18,7 @@ langchainhub = "*"
 black = "*"
 python-dotenv = "*"
 langchain-ollama = "*"
+requests = "*"
 
 [dev-packages]
 

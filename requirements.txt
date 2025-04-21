@@ -11,3 +11,4 @@ black
 langchainhub
 python-dotenv
 langchain-ollama
+requests
