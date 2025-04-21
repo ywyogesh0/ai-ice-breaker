@@ -6,10 +6,10 @@ from dotenv import load_dotenv
 
 class LinkedInAPI:
     def __init__(self):
-        self.api_key = os.getenv("LINKEDIN_API_KEY")
+        self.api_key = os.getenv("LINKEDIN_SCRAPIN_API_KEY")
         self.profile_url = os.getenv("LINKEDIN_PROFILE_URL")
-        self.api_endpoint = os.getenv("LINKEDIN_API_ENDPOINT")
-        self.mock_profile_url = os.getenv("LINKEDIN_MOCK_PROFILE_URL")
+        self.api_endpoint = os.getenv("LINKEDIN_SCRAPIN_API_ENDPOINT")
+        self.mock_profile_url = os.getenv("LINKEDIN_SCRAPIN_MOCK_PROFILE_URL")
 
     def get_user_profile(self, mock):
         headers = {
@@ -19,7 +19,7 @@ class LinkedInAPI:
 
         if mock:
             response = requests.get(
-                self.mock_profile_url,
+                url=self.mock_profile_url,
                 headers=headers,
                 timeout=10
             )
@@ -29,7 +29,7 @@ class LinkedInAPI:
                 'linkedInUrl': self.profile_url,
             }
             response = requests.get(
-                self.api_endpoint,
+                url=self.api_endpoint,
                 params=params,
                 headers=headers,
                 timeout=10

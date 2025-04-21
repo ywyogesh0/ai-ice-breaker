@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 from langchain_core.prompts import PromptTemplate
 from langchain_openai.chat_models import ChatOpenAI
 
-from third_party_source.linkedin import LinkedInAPI
+from third_party_source.linkedin_scrapin import LinkedInAPI
 
 if __name__ == "__main__":
     load_dotenv()
@@ -15,7 +15,7 @@ if __name__ == "__main__":
 
     # get the profile from LinkedIn
     linkedin_api = LinkedInAPI()
-    profile = linkedin_api.get_user_profile(mock=False)
+    profile = linkedin_api.get_user_profile(mock=True)
 
     profile_template = """
      Given the profile {profile} of the person. Please generate the overall summary.
