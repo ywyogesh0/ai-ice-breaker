@@ -22,15 +22,15 @@ def lookup_linkedin_profile_url(input_text: str) -> str:
     tools_for_agent = [
         Tool(
             name="search_linkedin_profile_url",
-            description="Search the LinkedIn profile URL from the given input text.",
+            description="Search the Valid LinkedIn profile URL from the given input text.",
             func=search_linkedin_profile_url
         )
     ]
 
     # create input prompt template
     input_prompt_template = """
-    You are a LinkedIn profile lookup agent. Your task is to find the LinkedIn profile URL from the given text {text}.
-    Only return the LinkedIn profile URL. If you cannot find the LinkedIn profile URL, return "No LinkedIn profile found".
+    You are a LinkedIn profile lookup agent. Your task is to find the Valid LinkedIn profile URL from the given text {text}.
+    Only return the Valid LinkedIn profile URL. If you cannot find the Valid LinkedIn profile URL, return "No LinkedIn profile found".
     """
 
     # create input prompt template instance
