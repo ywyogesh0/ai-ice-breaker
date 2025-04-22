@@ -1,15 +1,12 @@
-import os
-
 import streamlit as st
 from dotenv import load_dotenv
 from langchain_core.prompts import PromptTemplate
 from langchain_openai.chat_models import ChatOpenAI
 
-from third_party_source.linkedin_scrapin import LinkedInAPI
+from third_party_sources.linkedin_scrapin import LinkedInAPI
 
 if __name__ == "__main__":
     load_dotenv()
-    OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
     st.header("LinkedIn Profile...")
 
