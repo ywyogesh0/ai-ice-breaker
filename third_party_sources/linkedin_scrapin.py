@@ -44,6 +44,7 @@ class LinkedInScrapInAPI:
             # fetch person from json
             return response.json().get('person')
         else:
+            # raise an exception if the request was unsuccessful
             raise Exception(f"Error fetching profile: {response.status_code} - {response.text}")
 
 
