@@ -4,7 +4,7 @@ import requests
 from dotenv import load_dotenv
 
 
-class LinkedInAPI:
+class LinkedInProxyCurlAPI:
     def __init__(self):
         self.api_key = os.getenv("LINKEDIN_PROXYCURL_API_KEY")
         self.profile_url = os.getenv("LINKEDIN_PROFILE_URL")
@@ -51,11 +51,11 @@ if __name__ == "__main__":
     # load environment variables from .env file
     load_dotenv()
 
-    # create an instance of LinkedInAPI
-    linkedin_api = LinkedInAPI()
+    # create an instance of LinkedInProxyCurlAPI
+    linkedin_proxy_curl_api = LinkedInProxyCurlAPI()
 
     try:
-        profile_info = linkedin_api.get_user_profile(mock=True)
+        profile_info = linkedin_proxy_curl_api.get_user_profile(mock=True)
         print(profile_info)
     except Exception as e:
         print(e)

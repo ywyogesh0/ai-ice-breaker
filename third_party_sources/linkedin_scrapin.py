@@ -4,16 +4,16 @@ import requests
 from dotenv import load_dotenv
 
 
-class LinkedInAPI:
+class LinkedInScrapInAPI:
     def __init__(self):
         self.api_key = os.getenv("LINKEDIN_SCRAPIN_API_KEY")
-        self.profile_url = os.getenv("LINKEDIN_PROFILE_URL")
         self.api_endpoint = os.getenv("LINKEDIN_SCRAPIN_API_ENDPOINT")
         self.mock_profile_url = os.getenv("LINKEDIN_SCRAPIN_MOCK_PROFILE_URL")
 
-    def get_user_profile(self, mock):
+    def get_user_profile(self, url: str = None, mock: bool = False):
         """
         Fetches the LinkedIn profile information using the LinkedIn Scrapin API.
+        :param url: The LinkedIn profile URL to fetch. If None, a mock profile is fetched.
         :param mock: If True, fetches a mock profile. If False, fetches the actual profile.
         """
 
@@ -31,7 +31,7 @@ class LinkedInAPI:
         else:
             params = {
                 'apikey': self.api_key,
-                'linkedInUrl': self.profile_url,
+                'linkedInUrl': url,
             }
             response = requests.get(
                 url=self.api_endpoint,
@@ -51,11 +51,11 @@ if __name__ == "__main__":
     # load environment variables from .env file
     load_dotenv()
 
-    # create an instance of LinkedInAPI
-    linkedin_api = LinkedInAPI()
+    # create an instance of LinkedInScrapInAPI
+    linkedin_scrapin_api = LinkedInScrapInAPI()
 
     try:
-        profile_info = linkedin_api.get_user_profile(mock=True)
+        profile_info = linkedin_scrapin_api.get_user_profile(mock=True)
         print(profile_info)
     except Exception as e:
         print(e)

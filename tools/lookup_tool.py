@@ -11,6 +11,7 @@ def search_linkedin_profile_url(input_text: str):
 
     tavily_search = TavilySearchResults()
     search_result = tavily_search.run(tool_input=f"{input_text}")
+
     return search_result
 
 

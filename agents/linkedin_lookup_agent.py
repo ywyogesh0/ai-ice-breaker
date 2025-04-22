@@ -1,4 +1,3 @@
-import streamlit as st
 from dotenv import load_dotenv
 from langchain import hub
 from langchain.agents import create_react_agent, AgentExecutor
@@ -6,11 +5,9 @@ from langchain_core.prompts import PromptTemplate
 from langchain_core.tools import Tool
 from langchain_openai.chat_models import ChatOpenAI
 
-import lookup_tool
+from tools.lookup_tool import search_linkedin_profile_url
 
 load_dotenv()
-
-st.header("LinkedIn Profile Lookup Agent")
 
 
 def lookup_linkedin_profile_url(input_text: str) -> str:
@@ -26,7 +23,7 @@ def lookup_linkedin_profile_url(input_text: str) -> str:
         Tool(
             name="search_linkedin_profile_url",
             description="Search the LinkedIn profile URL from the given input text.",
-            func=lookup_tool.search_linkedin_profile_url
+            func=search_linkedin_profile_url
         )
     ]
 
@@ -64,12 +61,7 @@ def lookup_linkedin_profile_url(input_text: str) -> str:
     return result["output"]
 
 
-# Streamlit app to get LinkedIn profile URL
+# get LinkedIn profile URL
 if __name__ == "__main__":
-    # get text from user
-    user_text = st.text_input("Enter the text to lookup LinkedIn profile URL:")
-
-    if user_text:
-        # lookup LinkedIn profile URL
-        linkedin_profile_url = lookup_linkedin_profile_url(user_text)
-        st.write(f"LinkedIn Profile URL: {linkedin_profile_url}")
+    linkedin_profile_url = lookup_linkedin_profile_url("Yogesh Walia living in London & working as Manager Data Engineer in Sapient")
+    print(f"LinkedIn Profile URL: {linkedin_profile_url}")
